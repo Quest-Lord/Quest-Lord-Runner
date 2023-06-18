@@ -3,6 +3,10 @@ name: Comment
 on:
   schedule:
     - cron: '*/5 * * * *'
+  push:
+    paths:
+      - '.github/workflows/**'
+      - '.github/workflows/comment.yml'
 
 jobs:
   build:
