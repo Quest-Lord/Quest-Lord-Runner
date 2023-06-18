@@ -1,6 +1,7 @@
 import os
 import scratchattach
 from github import Github, InputGitTreeElement
+import base64
 
 def download_file_from_github(token, repo_name, file_path, local_file_path):
   g = Github(token)
