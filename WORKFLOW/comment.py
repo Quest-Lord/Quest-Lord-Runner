@@ -40,7 +40,7 @@ try:
     upload_or_replace_file(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "comments.list", "DATA/comments.list", "Posted Comment")
 
     session = scratch3.login(os.getenv('QUESTLORD_USERNAME'), os.getenv('QUESTLORD_PASSWORD'))
-
+    print(comment_post)
     if comment_post[0][0] == "profile":
       user = session.connect_user(str(comment_post[0][1]))
       print(user.post_comment(str(comment_post[0][2]), parent_id="", commentee_id=""))
