@@ -29,3 +29,7 @@ jobs:
 
     - name: Run Python Script
       run: python WORKFLOW/comment.py
+      env:
+        QUESTLORD_PASSWORD: ${{ secrets.QUESTLORD_PASSWORD }}
+        QUESTLORD_USERNAME: ${{ secrets.QUESTLORD_USERNAME }}
+        TOKEN: ${{ secrets.TOKEN }}
