@@ -1,5 +1,5 @@
 import os
-import scratchattach
+import scratchattach as scratch3
 from github import Github, InputGitTreeElement
 import base64
 
@@ -15,9 +15,13 @@ def download_file_from_github(token, repo_name, file_path, local_file_path):
     print(f"Failed to download file {file_path}: {str(e)}")
   return local_file_path
 
-download_file_from_github(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "DATA/comments.list", "comments.list")
+try:
+  download_file_from_github(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "DATA/comments.list", "comments.list")
+  
+  with open("comments.list", "r") as comments:
+    comment = eval(comments.read())
 
-with open("comments.list", "r") as comments:
-  comment = eval(comments.read())
-
-print(comment)
+  if len(comment) > 0:
+    session = scratch3.login(os.getenv('QUESTLORD_USERNAME'), os.getenv('QUESTLORD_PASSWORD'))
+except Exception as e:
+  print(e)
