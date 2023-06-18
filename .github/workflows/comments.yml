@@ -9,7 +9,7 @@ on:
       - '.github/workflows/comment.yml'
 
 jobs:
-  build:
+  Run:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,5 +26,5 @@ jobs:
         python -m pip install --upgrade pip
         pip install scratchattach
 
-    - name: Run Python script
+    - name: Run Python Script
       run: python WORKFLOW/comment.py
