@@ -15,6 +15,17 @@ def download_file_from_github(token, repo_name, file_path, local_file_path):
     print(f"Failed to download file {file_path}: {str(e)}")
   return local_file_path
 
+def upload_or_replace_file(token, repo_name, local_file_path, github_file_path, commit_message):
+  g = Github(token)
+  repo = g.get_repo(repo_name)
+  with open(local_file_path, 'r') as file:
+    content = file.read()
+  try:
+    contents = repo.get_contents(github_file_path)
+    repo.update_file(contents.path, commit_message, content, contents.sha)
+  except:
+    repo.create_file(github_file_path, commit_message, content)
+
 try:
   download_file_from_github(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "DATA/comments.list", "comments.list")
 
@@ -27,5 +38,11 @@ try:
     if comment[0][0] == "profile":
       user = session.connect_user(str(comment[0][1]))
       user.post_comment(str(comment[0][2]), parent_id="", commentee_id="")
+
+    comment.pop(0)
+    with open("comments.list", "w") as comments:
+      comments.write(str(comment))
+    upload_or_replace_file(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "comments.list", "DATA/comments.list", "Posted Comment")
+
 except Exception as e:
   print(e)
