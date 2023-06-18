@@ -43,6 +43,6 @@ try:
 
     if comment_post[0][0] == "profile":
       user = session.connect_user(str(comment_post[0][1]))
-      user.post_comment(str(comment_post[0][2]), parent_id="", commentee_id="")
+      print(user.post_comment(str(comment_post[0][2]), parent_id="", commentee_id=""))
 except Exception as e:
   print(e)
