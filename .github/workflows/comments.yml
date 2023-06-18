@@ -6,7 +6,7 @@ on:
   push:
     paths:
       - '.github/workflows/**'
-      - '.github/workflows/comment.yml'
+      - 'WORKFLOW/comment.yml'
 
 jobs:
   Run:
