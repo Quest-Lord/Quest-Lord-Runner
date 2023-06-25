@@ -1,0 +1,1 @@
+Base API: https://quest-lord.github.io/Quest-Lord-Runner/API/index.html
