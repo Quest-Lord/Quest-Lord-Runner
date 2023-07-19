@@ -37,7 +37,7 @@ try:
     with open("comments.list", "w") as comments:
       comments.write(str(comment))
   
-    upload_or_replace_file(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "comments.list", "DATA/comments.list", "📡✉️")
+    upload_or_replace_file(os.getenv('TOKEN'), "Quest-Lord/Quest-Lord", "comments.list", "DATA/comments.list", "📡📫")
   
     session = scratch3.login(os.getenv('QUESTLORD_USERNAME'), os.getenv('QUESTLORD_PASSWORD'))
   
